@@ -10,12 +10,15 @@ const OrderStatus = () => {
   const { orderWait, orderShip, orderComplete, orderCancel } = useSelector(
     (state) => state.customer.order
   );
+  const { handleOrderCancel, handleOrderConfirm } = useSelector(
+    (state) => state.customer.order
+  );
   useEffect(() => {
-    dispatch(getOrderWait(user_id))
-    dispatch(getOrderShip(user_id))
-    dispatch(getOrderComplete(user_id))
-    dispatch(getOrderCancel(user_id))
-  }, []);
+    dispatch(getOrderWait(user_id));
+    dispatch(getOrderShip(user_id));
+    dispatch(getOrderComplete(user_id));
+    dispatch(getOrderCancel(user_id));
+  }, [handleOrderCancel, handleOrderConfirm]);
   const user = useSelector((state) => state.customer.auth.dataUser);
   const navigate = useNavigate();
   return (
